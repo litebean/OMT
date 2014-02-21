@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="reportService" class="com.litetech.omt.report.impl.ReportServiceImpl" />
+	
+	
+	<bean id="omtCoreService" class="com.litetech.omt.service.impl.OMTCoreServiceImpl">
+		<constructor-arg ref="orderDAO" />
+		<constructor-arg ref="invoiceDAO" />
+		<constructor-arg ref="chargeDAO" />
+		<constructor-arg ref="paymentDAO" />
+		<constructor-arg ref="purchaseOrderDAO" />
+		<constructor-arg ref="purchaseInvoiceDAO" />
+		<constructor-arg ref="userDAO" />
+		<constructor-arg ref="settingDAO" />
+		<constructor-arg ref="reportService" />
+	</bean>
+	
+	<bean id="omtUserService" class="com.litetech.omt.service.impl.OMTUserServiceImpl">
+		<constructor-arg ref="userDAO" />
+	</bean>
+	
+	<bean id="omtInventoryService" class="com.litetech.omt.service.impl.OMTInventoryServiceImpl">
+		<constructor-arg ref="inventoryDAO" />
+	</bean>
+	
+	<bean id="omtPaymentService" class="com.litetech.omt.service.impl.OMTPaymentServiceImpl">
+		<constructor-arg ref="paymentDAO" />
+		<constructor-arg ref="userDAO" />
+		<constructor-arg ref="reportService" />
+	</bean>
+	
+	<bean id="omtAdminService" class="com.litetech.omt.service.impl.OMTAdminServiceImpl">
+		<constructor-arg ref="settingDAO" />		
+	</bean>
+</beans>	

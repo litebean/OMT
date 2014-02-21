@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inv-tax-template" language="java" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" >
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	
+	<style name="table_TH" mode="Opaque" backcolor="#D0D0BB">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	
+	<field name="compName" class="java.lang.String"/>
+	<field name="compValue" class="java.lang.String"/>
+	
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="0" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="0" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="0" splitType="Stretch"/>
+		
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TH" x="187" y="0" width="150" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{compName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="337" y="0" width="75" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{compValue}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="0" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="0" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="0" splitType="Stretch"/>
+	</summary>
+</jasperReport>

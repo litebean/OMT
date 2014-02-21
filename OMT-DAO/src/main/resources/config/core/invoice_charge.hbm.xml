@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="com.litetech.omt.dao.model.core.InvoiceCharge" table="INVOICE_CHARGE">
+	<id name="id" type="long" column="INVOICE_CHARGE_ID">
+         <generator class = "sequence">
+			<param name="sequence">INVOICE_CHARGE_SEQ</param>
+		 </generator>
+    </id>
+    <property name="invoiceId" column="INVOICE_ID" type="long"/>
+    <property name="chargeId" column="CHARGE_ID" type="long"/>
+    <property name="amount" column="CHARGED_AMOUNT" type="double"/>
+    <property name="isPurchase" column="is_purchase" type="int"/>
+    <property name="creationDate" column="CREATION_DATE" type="date"/>
+    <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+	
+	</class>
+	
+	<query name="findChargesByInvoiceId">
+        <![CDATA[from InvoiceCharge invCharge where invCharge.invoiceId = :invoiceId and invCharge.isPurchase = :isPurchase]]>
+    </query>
+	
+</hibernate-mapping>

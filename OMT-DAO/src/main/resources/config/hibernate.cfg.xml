@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <session-factory>
+   <property name="hibernate.dialect">
+     org.hibernate.dialect.PostgreSQLDialect
+   </property>
+   <property name="hibernate.connection.driver_class">
+     org.postgresql.Driver
+   </property>
+
+   <!-- Assume test is the database name -->
+   <property name="hibernate.connection.url">
+      jdbc:postgresql://localhost:5432/omtdb
+   </property>
+   <property name="hibernate.connection.username">
+      postgres
+   </property>
+   <property name="hibernate.connection.password">postgres</property>
+
+   <!-- List of XML mapping files -->
+   <!-- inventory entities -->
+   <mapping resource="inventory/product.hbm.xml"/>
+   <mapping resource="inventory/product_unit.hbm.xml"/>
+   <mapping resource="inventory/product_price.hbm.xml"/>
+   
+   <!-- core entities -->
+   <mapping resource="core/order.hbm.xml"/>
+   <mapping resource="core/line_item.hbm.xml"/>
+   <mapping resource="core/invoice.hbm.xml"/>
+   
+   <!-- user entities -->
+   <mapping resource="user/customer.hbm.xml"/>
+   <mapping resource="user/address.hbm.xml"/>
+
+</session-factory>
+</hibernate-configuration>

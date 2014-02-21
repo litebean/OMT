@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.core.InvoicePayment" table="INVOICE_PAYMENT">
+      
+      <id name="id" type="long" column="INVOICE_PAYMENT_ID">
+         <generator class = "sequence">
+			<param name="sequence">INVOICE_PAYMENT_SEQ</param>
+		 </generator>
+      </id>
+      
+      <property name="invoiceId" column="INVOICE_ID" type="long"/>
+      <property name="isPurchase" column="is_purchase" type="int"/>
+      <property name="paymentTransactionId" column="PAYMENT_TRANSACTION_ID" type="long"/>
+      <property name="paymentAmount" column="PAYEMENT_AMT" type="double"/>
+      <property name="status" column="STATUS" type="int"/>
+      <property name="paymentDueDate" column="PAYMENT_DUE_DATE" type="date"/>
+      
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+            
+   </class>
+   
+   <query name="findByTransactionId">
+        <![CDATA[from InvoicePayment invPayment where invPayment.paymentTransactionId = :paymentTransactionId]]>
+   </query>
+   
+   <query name="findByInvoiceId">
+        <![CDATA[from InvoicePayment invPayment where invPayment.invoiceId = :invoiceId and invPayment.isPurchase = :purchase]]>
+    </query>
+   
+</hibernate-mapping>

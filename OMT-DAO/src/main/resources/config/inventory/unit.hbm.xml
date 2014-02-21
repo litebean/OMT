@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.inventory.Unit" table="Unit">
+      
+      <id name="id" type="long" column="unit_id">
+         <generator class = "sequence">
+			<param name="sequence">UNIT_SEQ</param>
+		 </generator>
+      </id>
+      <property name="name" column="UNIT_NAME" type="string"/>
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+      
+    
+   </class>
+   <query name="fetchAllUnits">
+        <![CDATA[from Unit unit]]>
+   </query>
+    
+   <query name="findUnitIdsByName">
+        <![CDATA[select unit.id from Unit unit where unit.name = :name]]>
+   </query> 
+</hibernate-mapping>

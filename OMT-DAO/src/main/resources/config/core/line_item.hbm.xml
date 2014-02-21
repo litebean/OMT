@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.core.LineItem" table="LINE_ITEM">
+      
+      <id name="id" type="long" column="LINE_ITEM_ID">
+         <generator class = "sequence">
+			<param name="sequence">LINE_ITEM_SEQ</param>
+		 </generator>
+      </id>
+      <property name="refId" column="REF_ID" type="long"/>
+      <property name="refType" column="REF_TYPE" type="int"/>
+      <property name="productId" column="PRODUCT_ID" type="long"/> 
+      <property name="lineItemDesc" column="LINE_ITEM_DESC" type="string"/>
+      <property name="lineItemStatus" column="LINE_ITEM_STATUS" type="int"/>
+      <property name="unitId" column="UNIT_ID" type="long"/> 
+      <property name="quantity" column="QUANTITY" type="double"/>
+      
+      <property name="invoicedQty" column="INVOICED_QUANTITY" type="double"/>
+      <property name="price" column="PRICE" type="double"/>
+      <property name="totalCost" column="TOTAL_COST" type="double"/>
+      <property name="taxAmt" column="TAX_AMT" type="double"/>
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>    
+   
+   	         
+   </class>
+   
+   
+   
+   <query name="findByRefIdAndType">
+        <![CDATA[from LineItem lineItem where lineItem.refId = :refId and lineItem.refType = :refType]]>
+    </query>
+   
+   
+    
+   
+</hibernate-mapping>

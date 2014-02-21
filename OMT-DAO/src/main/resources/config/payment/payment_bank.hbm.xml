@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.payment.Bank" table="Payment_Bank">
+      
+      <id name="id" type="long" column="payment_bank_id">
+         <generator class = "sequence">
+			<param name="sequence">PAYMENT_BANK_SEQ</param>
+		 </generator>
+      </id>
+      <property name="name" column="BANK_NAME" type="string"/>
+      <property name="status" column="STATUS" type="int"/>
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+      
+    
+   </class>
+   <query name="fetchAllBank">
+        <![CDATA[from Bank bank]]>
+   </query>
+    
+   <query name="fetchBanksByStatus">
+        <![CDATA[from Bank bank where bank.status = :status]]>
+   </query> 
+</hibernate-mapping>

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sampleInvoice" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" >
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="166"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D0D0BB">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFFFE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<!--
+	<subDataset name="LineItemDataset" >
+		<field name="SLNo" class="java.lang.String"/>
+		<field name="Product Name" class="java.lang.String"/>
+		<field name="Description" class="java.lang.String"/>
+		<field name="Unit" class="java.lang.String"/>
+		<field name="Price" class="java.lang.String"/>
+		<field name="Quantity" class="java.lang.String"/>
+		<field name="Total Price" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="LineItemTable" >
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="SLNo" class="java.lang.String"/>
+		<field name="Product Name" class="java.lang.String"/>
+		<field name="Description" class="java.lang.String"/>
+		<field name="Unit" class="java.lang.String"/>
+		<field name="Price" class="java.lang.String"/>
+		<field name="Quantity" class="java.lang.String"/>
+		<field name="Total Price" class="java.lang.String"/>
+	</subDataset>
+	-->
+	<subDataset name="sample-table-ds">
+		<field name="SLNo" class="java.lang.String"/>
+		<field name="Product Name" class="java.lang.String"/>
+		<field name="Description" class="java.lang.String"/>
+		<field name="Unit" class="java.lang.String"/>
+		<field name="Price" class="java.lang.String"/>
+		<field name="Quantity" class="java.lang.String"/>
+		<field name="Total Price" class="java.lang.String"/>
+	</subDataset>
+	<!-- 
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["F:\\research\\jasper-report\\ireport-template\\"]]></defaultValueExpression>
+	</parameter>-->
+	<parameter name="SubreportDataSource" class="net.sf.jasperreports.engine.data.JRCsvDataSource" isForPrompting="false"/> 
+	<parameter name="SubReportParam" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+
+	
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="orgName" class="java.lang.String"/>
+	<field name="orgAddLine1" class="java.lang.String"/>
+	<field name="orgAddLine2" class="java.lang.String"/>
+	<field name="orgAddLine3" class="java.lang.String"/>
+	<field name="org-city-state" class="java.lang.String"/>
+	<field name="org-country-pincode" class="java.lang.String"/>
+	<field name="orgPhoneNos" class="java.lang.String"/>
+	<field name="invoiceId" class="java.lang.String"/>
+	<field name="invoiceDate" class="java.lang.String"/>
+	<field name="DCNo" class="java.lang.String"/>
+	<field name="OrgTinNo" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="custAddLine1" class="java.lang.String"/>
+	<field name="custAddLine2" class="java.lang.String"/>
+	<field name="custAddLine3" class="java.lang.String"/>
+	<field name="cust-city-state" class="java.lang.String"/>
+	<field name="cust-country-pincode" class="java.lang.String"/>
+	<field name="custPhoneNos" class="java.lang.String"/>
+	<field name="customerTin" class="java.lang.String"/>
+	<field name="vendorCode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement  x="213" y="2" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="13" width="213" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orgName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="0" y="26" width="137" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orgAddLine1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="26" width="162" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orgAddLine2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="52" width="213" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orgAddLine3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="65" width="213" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{org-city-state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="79" width="213" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{org-country-pincode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="94" width="211" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orgPhoneNos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="22" width="60" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Invoice ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="37" width="60" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Invoice Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="474" y="22" width="81" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="36" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoiceDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="52" width="60" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Our Tin No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="474" y="53" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OrgTinNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="69" width="55" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[DC No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="474" y="68" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DCNo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="117" width="552" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="109" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="77" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Customer Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="15" width="77" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="79" y="11" width="203" height="1"/>
+			</line>
+			<line>
+				<reportElement x="79" y="27" width="203" height="1"/>
+			</line>
+			<line>
+				<reportElement x="79" y="41" width="203" height="1"/>
+			</line>
+			<line>
+				<reportElement x="79" y="55" width="203" height="1"/>
+			</line>
+			<line>
+				<reportElement x="79" y="70" width="203" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="79" y="0" width="189" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="16" width="190" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custAddLine1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="30" width="189" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custAddLine3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="44" width="189" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cust-city-state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="59" width="189" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cust-country-pincode}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="80" y="91" width="203" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="80" width="77" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Phone No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="81" y="80" width="187" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custPhoneNos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="388" y="2" width="78" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Customer Tin No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="19" width="58" height="17"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Vendor Code:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="465" y="2" width="90" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{customerTin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="18" width="90" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{vendorCode}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="0" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		
+		<band height="127" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="27" y="21" width="457" height="89"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="sample-table-ds" >
+						<!-- <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression> -->
+						<dataSourceExpression><![CDATA[$P{SubreportDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{Product Name}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column width="90" >
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		
+	</detail>
+	<columnFooter>
+		<band height="0" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="0" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="0" splitType="Stretch"/>
+	</summary>
+</jasperReport>

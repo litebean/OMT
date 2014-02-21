@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sampleInvoice_subreport2" language="java" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" >
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	
+	<style name="table_TH" mode="Opaque" backcolor="#D0D0BB">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	
+	
+	<field name="searchDescLine1" class="java.lang.String"/>
+	<field name="searchDescLine2" class="java.lang.String"/>
+	<field name="totalCredit" class="java.lang.String"/>
+	<field name="totalDebit" class="java.lang.String"/>
+	<field name="profitLoss" class="java.lang.String"/>
+	<field name="amountInWords" class="java.lang.String"/>
+	<field name="transactionId" class="java.lang.String"/>
+	<field name="transactionDate" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="creditAmt" class="java.lang.String"/>
+	<field name="debitAmt" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="transactionMode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="180" splitType="Stretch">
+			<!--
+			<staticText>
+				<reportElement  x="2" y="2" width="300" height="20"/>
+				<textElement textAlignment="Right"> 
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profit Loss Report]]></text>
+			</staticText>
+			-->
+			<line>
+				<reportElement x="0" y="25" width="560" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="28" width="560" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{searchDescLine1})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="48" width="560" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" />
+				</textElement>
+				<textFieldExpression><![CDATA[($F{searchDescLine2})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="70" width="560" height="1"/>
+			</line>
+			
+			<staticText>
+				<reportElement style="table_TH" x="2" y="80" width="150" height="20"/>
+				<textElement textAlignment="Left" />
+				<text><![CDATA[Total Income/Credit]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="152" y="80" width="100" height="20"/>
+				<textElement textAlignment="Right" />
+				<textFieldExpression><![CDATA[$F{totalCredit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TH" x="2" y="100" width="150" height="20"/>
+				<textElement textAlignment="Left" />
+				<text><![CDATA[Total Expense/Debit]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="152" y="100" width="100" height="20"/>
+				<textElement textAlignment="Right" />
+				<textFieldExpression><![CDATA[$F{totalDebit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TH" x="2" y="120" width="150" height="20"/>
+				<textElement textAlignment="Left" />
+				<text><![CDATA[Overall Profit]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="152" y="120" width="100" height="20"/>
+				<textElement textAlignment="Right" />
+				<textFieldExpression><![CDATA[$F{profitLoss}]]></textFieldExpression>
+			</textField>
+			
+			<staticText>
+				<reportElement style="table_TD" x="252" y="80" width="300" height="60"/>
+				<textElement textAlignment="Left" />
+				<text><![CDATA[ ]]></text>
+			</staticText> 
+			<staticText>
+				<reportElement x="257" y="80" width="295" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Profit In Words:]]></text>
+			</staticText>			
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="257" y="100" width="295" height="40"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountInWords}]]></textFieldExpression>
+			</textField>
+			
+			<staticText>
+				<reportElement x="2" y="160" width="500" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" />
+				</textElement>
+				<text><![CDATA[Below is the detailed transaction summary]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_TH" x="2" y="0" width="73" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="75" y="0" width="75" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="150" y="0" width="280" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>  
+			<staticText>
+				<reportElement style="table_TH" x="430" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[Cr/Sale]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TH" x="490" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[Db/Purchase]]></text>
+			</staticText>
+			<!-- <staticText>
+				<reportElement style="table_TH" x="470" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" />
+				<text><![CDATA[Mode]]></text>
+			</staticText> -->
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="2" y="0" width="73" height="20"/>
+				<textElement textAlignment="Center" >
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transactionId}]]></textFieldExpression>
+			</textField>
+					
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="75" y="0" width="75" height="20"/>
+				<textElement textAlignment="Center" >
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transactionDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="150" y="0" width="280" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="430" y="0" width="60" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{creditAmt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="490" y="0" width="60" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debitAmt}]]></textFieldExpression>
+			</textField>
+		<!--	<textField>
+				<reportElement style="table_TD" x="560" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transactionMode}]]></textFieldExpression>
+			</textField> -->
+			
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="0" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+		<staticText>
+				<reportElement x="2" y="0" width="500" height="10"/>
+				<textElement  textAlignment="Center">
+					<font fontName="Times New Roman" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This is a computer generated report powered by Lite Bean Technologies pvt Ltd.]]></text>
+		</staticText>
+		</band>	
+	</pageFooter>
+	<summary>
+		<band height="0" splitType="Stretch"/>
+	</summary>
+</jasperReport>

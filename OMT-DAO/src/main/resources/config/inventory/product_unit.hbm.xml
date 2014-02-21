@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.inventory.ProductUnit" table="PRODUCT_UNIT">
+      
+      <id name="id" type="long" column="product_unit_id">
+         <generator class = "sequence">
+			<param name="sequence">PRODUCT_UNIT_SEQ</param>
+		 </generator>
+      </id>
+      <property name="productId" column="PRODUCT_ID" type="long"/>
+      <property name="priceRatio" column="price_ratio" type="double"/>
+      <property name="quantityRatio" column="quantity_ratio" type="double"/> 
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+      <property name="level" column="LEVEL" type="int"/>  
+           
+      <many-to-one name="unit" column="UNIT_ID" unique="true" 
+         class="com.litetech.omt.dao.model.inventory.Unit" not-null="true"/>
+
+      
+   </class>
+   <query name="fetchProductUnits">
+        <![CDATA[from ProductUnit productUnit where productUnit.productId = :productId]]>
+    </query>
+</hibernate-mapping>

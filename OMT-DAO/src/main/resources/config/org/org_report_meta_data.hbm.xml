@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.org.OrgReportMetaData" table="ORG_REPORT_META_DATA">
+      
+      <id name="id" type="long" column="ORG_REPORT_META_DATA_ID">
+         <!-- <generator class = "sequence">
+			<param name="sequence">ADDRESS_SEQ</param>
+		 </generator> -->
+      </id>
+      
+	  <property name="reportKey" column="REPORT_KEY" type="string"/>
+      <property name="reportValue" column="REPORT_VALUE" type="string"/>
+       
+   </class>
+   <query name="fetchAllReportMetaData">
+        <![CDATA[from OrgReportMetaData reportMetaData order by id]]>
+   </query>
+</hibernate-mapping>

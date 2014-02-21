@@ -1,0 +1,173 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	 http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+ 
+  	 
+   	<!-- enable the configuration of transactional behavior based on annotations -->
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+
+  
+  <bean id = "transactionManager" class = "org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name = "sessionFactory" ref = "sessionFactory" />
+  </bean>  	
+ 
+ 	<bean id="orderVODOMapper" class="com.litetech.omt.dao.mapper.OrderVODOMapper" />
+ 	<bean id="invoiceVODOMapper" class="com.litetech.omt.dao.mapper.InvoiceVODOMapper" />
+ 	<bean id="lineItemVODOMapper" class="com.litetech.omt.dao.mapper.LineItemVODOMapper" />
+ 	<bean id="invoiceChargeVODOMapper" class="com.litetech.omt.dao.mapper.InvoiceChargeVODOMapper" />
+ 	<bean id="chargeVODOMapper" class="com.litetech.omt.dao.mapper.ChargeVODOMapper" />
+ 	
+ 	<bean id="userVODOMapper" class="com.litetech.omt.dao.mapper.UserVODOMapper" />
+ 	<bean id="inventoryVODOMapper" class="com.litetech.omt.dao.mapper.InventoryVODOMapper" />
+ 	<bean id="transactionVODOMapper" class="com.litetech.omt.dao.mapper.TransactionVODOMapper" />
+  	<bean id="purchaseOrderVODOMapper" class="com.litetech.omt.dao.mapper.PurchaseOrderVODOMapper" />
+  	<bean id="purchaseInvoiceVODOMapper" class="com.litetech.omt.dao.mapper.PurchaseInvoiceVODOMapper" />
+  	
+  	<bean id="internalInventoryDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalInventoryDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="inventoryVODOMapper"/>
+   		<constructor-arg ref="internalInventoryTransactionDAO"/>
+   	</bean>
+   	
+   	<bean id="internalOrderDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalOrderDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="orderVODOMapper"/>
+   	</bean>
+   	
+   	<bean id="internalPurchaseOrderDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalPurchaseOrderDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="purchaseOrderVODOMapper"/>
+   	</bean>
+   	
+   	
+   	<bean id="internalInvoiceDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalInvoiceDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="invoiceVODOMapper"/>
+   	</bean>
+   	
+   	<bean id="internalPurchaseInvoiceDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalPurchaseInvoiceDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="purchaseInvoiceVODOMapper"/>
+   	</bean>
+   	
+   	<bean id="internalLineItemDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalLineItemDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="lineItemVODOMapper"/>
+   		<constructor-arg ref="internalInventoryDAO"/>
+   	</bean>
+   
+   <bean id="internalChargeDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalChargeDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="chargeVODOMapper"/>
+   	</bean>		
+   	
+   	<bean id="internalInvoiceChargeDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalInvoiceChargeDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="invoiceChargeVODOMapper"/>
+   		<constructor-arg ref="internalChargeDAO"/>
+   	</bean>
+   	   	
+   	<bean id="internalUserDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.internal.InternalUserDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="userVODOMapper"/>
+   	</bean>
+   	
+   	
+   	<bean id="internalPaymentDAO"
+   				class="com.litetech.omt.dao.hibernate.impl.internal.InternalPaymentDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   		<constructor-arg ref="transactionVODOMapper"/>
+   		<constructor-arg ref="invoiceVODOMapper"/>		
+   		<constructor-arg ref="purchaseInvoiceVODOMapper"/>
+   	</bean>			
+   	
+   	<bean id="internalOrgDAO"
+   				class="com.litetech.omt.dao.hibernate.impl.internal.InternalOrgDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   	</bean>
+   	
+   	<bean id="internalSettingDAO"
+   				class="com.litetech.omt.dao.hibernate.impl.internal.InternalSettingDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   	</bean>
+   	
+   	<bean id="internalInventoryTransactionDAO"
+   				class="com.litetech.omt.dao.hibernate.impl.internal.InternalInventoryTransactionDAO" >
+   		<constructor-arg ref="sessionFactory"/>
+   	</bean>
+   	
+   	<bean id="orderDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.OrderDAOImpl" >
+   		<constructor-arg ref="internalOrderDAO"/>
+   		<constructor-arg ref="internalLineItemDAO"/>
+   		<constructor-arg ref="internalInvoiceDAO"/>
+   	</bean>
+   	
+   	
+ 	<bean id="purchaseOrderDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.PurchaseOrderDAOImpl" >
+   		<constructor-arg ref="internalPurchaseOrderDAO"/>
+   		<constructor-arg ref="internalLineItemDAO"/>
+   		<constructor-arg ref="internalPurchaseInvoiceDAO"/>
+   		
+   	</bean>
+ 
+ 	<bean id="invoiceDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.InvoiceDAOImpl" >
+   		<constructor-arg ref="internalInvoiceDAO"/>
+   		<constructor-arg ref="internalLineItemDAO"/>
+   		<constructor-arg ref="internalInvoiceChargeDAO" />
+   		<constructor-arg ref="internalPaymentDAO" />
+   	</bean>
+
+ 	<bean id="purchaseInvoiceDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.PurchaseInvoiceDAOImpl" >
+   		<constructor-arg ref="internalPurchaseInvoiceDAO"/>
+   		<constructor-arg ref="internalLineItemDAO"/>
+   		<constructor-arg ref="internalInvoiceChargeDAO" />
+   		<!--  <constructor-arg ref="internalPaymentDAO" />  -->
+   	</bean>   	
+   	<bean id="paymentDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.PaymentDAOImpl" >
+   		<constructor-arg ref="internalInvoiceDAO"/>
+   		<constructor-arg ref="internalPaymentDAO"/>
+   		<constructor-arg ref="internalPurchaseInvoiceDAO"/>
+   	</bean>
+   	
+   	<bean id="chargeDAO"
+   	  	class="com.litetech.omt.dao.hibernate.impl.ChargeDAOImpl" >
+   	  	<constructor-arg ref="internalChargeDAO"/>
+   	</bean>
+   	
+  	<bean id="userDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.UserDAOImpl" >
+   		<constructor-arg ref="internalUserDAO"/>
+   		<constructor-arg ref="internalOrgDAO"/>
+   	</bean>
+   	
+   	<bean id="inventoryDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.InventoryDAOImpl" >
+   		<constructor-arg ref="internalInventoryDAO"/>
+   	</bean>
+   	
+   	<bean id="settingDAO" 
+                class="com.litetech.omt.dao.hibernate.impl.SettingDAOImpl" >
+   		<constructor-arg ref="internalSettingDAO"/>
+   	</bean>
+</beans>

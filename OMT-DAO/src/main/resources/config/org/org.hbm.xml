@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.litetech.omt.dao.model.org.Org" table="ORG">
+      
+      <id name="id" type="long" column="ORG_ID">
+         <!-- <generator class = "sequence">
+			<param name="sequence">ORG_SEQ</param>
+		 </generator> -->
+      </id>
+      
+	  <property name="orgName" column="ORG_NAME" type="string"/>
+      <property name="ssiNo" column="SSI_NO" type="string"/>
+      <property name="tinNo" column="TIN_NO" type="string"/>
+      <property name="cstNo" column="CST_NO" type="string"/>
+      <property name="areaCode" column="AREA_CODE" type="string"/>
+      
+      <property name="creationDate" column="CREATION_DATE" type="date"/>
+      <property name="lastModifiedDate" column="LAST_MODIFIED_DATE" type="date"/>
+            
+   </class>
+</hibernate-mapping>

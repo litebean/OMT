@@ -1,0 +1,7 @@
+compName;compValue;
+SubTotal;3000.00;
+Service Tax @ 5%;150.00;
+Cess Tax @ 2%;3.20;
+SubTotal;3153.00;
+Discount;3.00;
+Total;3100.20;

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inv-tax-template" language="java" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" >
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	
+	<style name="table_TH" mode="Opaque" backcolor="#D0D0BB">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	
+	<field name="grNo" class="java.lang.String"/>
+	<field name="amountInWords" class="java.lang.String"/>
+	<field name="cstCharge" class="java.lang.String"/>
+	
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="0" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="0" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="65" splitType="Stretch">
+			
+			<staticText>
+				<reportElement x="2" y="0" width="68" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[GRN No.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="20" width="150" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[CST Charged at ......... % against ]]></text>
+			</staticText>
+			
+			<textField>
+				<reportElement x="85" y="18" width="50" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cstCharge}]]></textFieldExpression>
+			</textField>
+			
+			<staticText>
+				<reportElement x="150" y="20" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Form 'C']]></text>
+			</staticText>
+			<!--
+			<line>
+				<reportElement x="2" y="40" width="325" height="1"/>
+			</line>
+			-->
+			<staticText>
+				<reportElement x="2" y="42" width="98" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9" />
+				</textElement>
+				<text><![CDATA[Amount in Words: ]]></text>
+			</staticText>
+			  <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="100" y="40" width="200" height="20"/>
+				
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountInWords}]]></textFieldExpression>
+			</textField>
+			
+			
+			
+		  </band>		
+	</columnHeader>
+	<detail>
+		<band height="0" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="0" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="0" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="0" splitType="Stretch"/>
+	</summary>
+</jasperReport>
