@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <name>Order Management Tool - Desktop App</name>
  
+
   <modules>
     <module>OMT-COMMON</module>
     <module>OMT-DAO</module> 
